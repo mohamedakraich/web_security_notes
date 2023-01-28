@@ -51,7 +51,7 @@
 - echo | openssl s_client -connect hackycorp.com:443 | openssl x509 -noout -text | grep DNS:
 - openssl x509 -noout -text -in MyCertificate.crt | grep DNS:
 
-#### HEADER INSPECTION
+#### Header Inspection
 
 - curl https://hackycorp.com/ --dump-header - -o /dev/null -s
 
@@ -63,7 +63,7 @@
 - for i in `cat hosts.txt` do curl $i/logo.png -o $i.png done
 - open .
 
-#### VIRTUAL HOST BRUTE FORCING
+#### Virtual Host Brute Forcing
 
 - docker run -it golang
 - go install github.com/ffuf/ffuf@latest
@@ -74,7 +74,7 @@
 - curl -H "Host: admin.hackycorp.com"  http://hackycorp.com
 - ffuf -w ~/wordlists/subdomains.txt -H "Host: FUZZ.hackycorp.com" -u http://hackycorp.com -fs 1495
 
-#### LOAD BALANCING
+#### Load Balancing
 
 - dig -t TXT key.z.hackycorp.com
 
