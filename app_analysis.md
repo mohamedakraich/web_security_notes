@@ -5,7 +5,7 @@
 - Open Ports and Services.
 - Web hosting software.
 - Application framework.
-- Application: Custom code ro COTS.
+- Application: Custom code or COTS.
 - Application libraries (usually Javascript).
 - Integrations.
 
@@ -47,7 +47,7 @@
 - Pay special attention to config files for DB connections
 - Pay special attention to where the admin login and routes/endpoints are 
 
-### Application Analysis######
+### Application Analysis
 
 ###### Big Questions
 
