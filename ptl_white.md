@@ -1,4 +1,4 @@
-## PTL Yellow Random Notes
+## PTL White Random Notes
 
 #### From SQL Injection to Shell
 
