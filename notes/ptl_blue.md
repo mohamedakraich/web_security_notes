@@ -4,3 +4,7 @@
 
 - wget -r http://<RHOST>/.git/
 - git diff
+
+#### JWT
+
+- hashcat
