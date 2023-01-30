@@ -8,6 +8,7 @@
 #### JWT
 
 - hashcat
+- Always Look out for the kid param in the jwt token header which might be a vector for an attack
 
 ## Git Information Leak II
 
