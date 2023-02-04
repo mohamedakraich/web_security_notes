@@ -8,7 +8,9 @@
 #### JWT
 
 - hashcat
-- Always Look out for the kid param in the jwt token header which might be a vector for an attack
+- Always Look out for the kid param in the jwt token header which might be a vector for an attack (SQL injections Directory traversals...)
+- SQL Injection => gdgsgsg' UNION SELECT secretValue'
+- Directorty Traversal => public/css/bootstrap.css
 
 ## Git Information Leak II
 
